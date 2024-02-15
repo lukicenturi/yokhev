@@ -5,6 +5,7 @@ import { ref, watch } from "vue";
 import { set, useIntersectionObserver } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
+import { useIntersection } from "@/utils/intersection";
 
 const { section } = storeToRefs(useStore());
 
@@ -20,15 +21,13 @@ watch(section, (section) => {
 
 const target = ref();
 
-useIntersectionObserver(target, ([{ isIntersecting }]) => {
-  if (isIntersecting) {
-    set(section, 1);
-  }
+useIntersection(target, () => {
+  set(section, 1);
 });
 </script>
 
 <template>
-  <section ref="target" class="w-full h-screen" id="section-1">
+  <section ref="target" class="w-full h-full" id="section-1">
     <div class="container h-full">
       <div
         class="flex flex-col h-full w-full items-center justify-center gap-10"

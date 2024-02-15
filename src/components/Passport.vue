@@ -64,6 +64,10 @@ defineProps({
     .passport {
       &__cover {
         transform: rotateY(-180deg);
+
+        &__front {
+          @apply opacity-0;
+        }
       }
     }
   }
@@ -79,9 +83,6 @@ defineProps({
       &__cover {
         &__back {
           @apply opacity-30;
-        }
-        &__front {
-          @apply opacity-0;
         }
       }
 

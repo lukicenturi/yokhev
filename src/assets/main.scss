@@ -6,6 +6,9 @@
 }
 
 html {
+  @apply bg-gray-300 h-full bg-fixed #{!important};
+  background: url('../bg.jpg');
+  background-size: cover;
   scroll-snap-type: y mandatory;
   scroll-snap-stop: always;
 }
@@ -15,9 +18,7 @@ section {
 }
 
 body {
-  @apply bg-gray-300 min-h-screen;
-  background: url('../bg.jpg');
-  background-size: cover;
+  @apply h-full;
 }
 
 :root {

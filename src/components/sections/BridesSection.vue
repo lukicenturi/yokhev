@@ -2,7 +2,8 @@
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
 import { ref } from "vue";
-import { set, useIntersectionObserver } from "@vueuse/core";
+import { set } from "@vueuse/core";
+import { useIntersection } from "@/utils/intersection";
 
 const images = ["yoksan.jpg", "heavenny.jpg"];
 
@@ -10,14 +11,12 @@ const { section } = storeToRefs(useStore());
 
 const target = ref();
 
-useIntersectionObserver(target, ([{ isIntersecting }]) => {
-  if (isIntersecting) {
-    set(section, 2);
-  }
+useIntersection(target, () => {
+  set(section, 2);
 });
 </script>
 <template>
-  <section ref="target" class="w-full h-screen" id="section-2">
+  <section ref="target" class="w-full h-full" id="section-2">
     <div class="container h-full">
       <div class="flex items-center justify-center h-full">
         <div class="flex gap-6 lg:flex-col wrapper" :class="`state-${section}`">
