@@ -6,11 +6,16 @@ import { get } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/index";
 import HolyMatrimonySection from "@/components/sections/HolyMatrimonySection.vue";
+import { RiVolumeUpLine, RiVolumeMuteLine } from "vue-remix-icons";
 
-const { section } = storeToRefs(useStore());
+const { section, playAudio, opened } = storeToRefs(useStore());
 
 const goToSection = () => {
-  const el = document.querySelector(`#section-${get(section)}`);
+  const sectionVal = get(section);
+
+  // if (sectionVal < 2) return;
+
+  const el = document.querySelector(`#section-${sectionVal}`);
   if (el) {
     const top = el.offsetTop;
     window.scrollTo({
@@ -19,10 +24,6 @@ const goToSection = () => {
     });
   }
 };
-
-watch(section, () => {
-  // goToSection();
-});
 
 //
 // const throttleFn = useThrottleFn((e) => {
@@ -43,14 +44,29 @@ onMounted(() => {
   window.addEventListener("resize", () => {
     goToSection();
   });
+});
 
-  // window.addEventListener("wheel", (e) => {
-  //   throttleFn(e);
-  // });
+watch(playAudio, (playAudio) => {
+  const audio = document.querySelector("#audio");
+  if (playAudio) {
+    audio.play();
+    audio.volume = 0.7;
+  } else {
+    audio.pause();
+  }
 });
 </script>
 <template>
   <OpeningSection />
   <BridesSection />
   <HolyMatrimonySection />
+  <button
+    class="fixed bottom-4 right-4 rounded-full bg-primary text-white z-[10] p-4 hover:opacity-80 active:opacity-90"
+    v-if="opened"
+    @click="playAudio = !playAudio"
+  >
+    <span class="block w-6 h-6">
+      <RiVolumeUpLine v-if="playAudio" /> <RiVolumeMuteLine v-else />
+    </span>
+  </button>
 </template>

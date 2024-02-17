@@ -2,17 +2,19 @@
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
 import { ref } from "vue";
-import { set } from "@vueuse/core";
+import { get, set } from "@vueuse/core";
 import { useIntersection } from "@/utils/intersection";
 
 const images = ["yoksan.jpg", "heavenny.jpg"];
 
-const { section } = storeToRefs(useStore());
+const { section, opened } = storeToRefs(useStore());
 
 const target = ref();
 
 useIntersection(target, () => {
-  set(section, 2);
+  if (get(opened)) {
+    set(section, 2);
+  }
 });
 </script>
 <template>

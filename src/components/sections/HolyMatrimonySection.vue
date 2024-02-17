@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { set } from "@vueuse/core";
+import { get, set } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
 import { useIntersection } from "@/utils/intersection";
 import Countdown from "@/components/Countdown.vue";
 
-const { section } = storeToRefs(useStore());
+const { section, opened } = storeToRefs(useStore());
 
 const target = ref();
 
 useIntersection(target, () => {
-  set(section, 3);
+  if (get(opened)) {
+    set(section, 3);
+  }
 });
 </script>
 <template>
