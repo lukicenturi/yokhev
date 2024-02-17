@@ -9,18 +9,20 @@ html {
   @apply bg-gray-100 h-full bg-fixed bg-cover overflow-x-hidden #{!important};
   background: url('../bg.jpg');
 
-  &:before {
+  &:before,
+  &:after {
     content: "";
-    @apply fixed top-[4vh] -right-[3rem] w-[412px] max-w-[70vw] h-[130px] bg-contain opacity-30 pointer-events-none -scale-x-100 bg-no-repeat #{!important};
+    @apply fixed -z-[1] bg-contain bg-no-repeat opacity-30 pointer-events-none max-w-[70vw] #{!important};
     filter: sepia(100%) hue-rotate(115deg);
     background: url("../plane.webp");
   }
 
+  &:before {
+    @apply top-[calc(4*var(--vh))] -right-[3rem] w-[412px] h-[130px] -scale-x-100;
+  }
+
   &:after {
-    content: "";
-    @apply fixed bottom-[4vh] -left-[3rem] w-[330px] h-[104px] max-w-[70vw] bg-contain opacity-30 pointer-events-none transform rotate-180 -scale-x-100 -scale-y-100 bg-no-repeat #{!important};
-    filter: sepia(100%) hue-rotate(115deg);
-    background: url("../plane.webp");
+    @apply bottom-[calc(4*var(--vh))] -left-[3rem] w-[330px] h-[104px] rotate-180 -scale-100 #{!important};
   }
 }
 
@@ -32,8 +34,8 @@ body {
   --passport-width: 300px;
   --passport-height: 433px;
   --passport-scale: 1.2;
-  --passport-top: 100vh;
-  --passport-top-2: 40vh;
+  --passport-top: calc(100*var(--vh));
+  --passport-top-2: calc(40*var(--vh));
 
   @media (max-width: 767px) {
     --passport-scale: 1;
@@ -42,7 +44,7 @@ body {
   @media (max-width: 1023px) {
     --passport-width: 225px;
     --passport-height: 324px;
-    --passport-top: 130vh;
-    --passport-top-2: 70vh;
+    --passport-top: calc(130*var(--vh));
+    --passport-top-2: calc(70*var(--vh));
   }
 }

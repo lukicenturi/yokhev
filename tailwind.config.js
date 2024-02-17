@@ -12,7 +12,11 @@ module.exports = {
         poppins: ["Poppins"],
       },
       colors: {
-        primary: "#265748",
+        primary: {
+          DEFAULT: "#265748",
+          hover: "#51796d",
+          active: "#3c685a",
+        },
       },
     },
   },

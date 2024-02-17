@@ -5,6 +5,7 @@ import { ref, watch } from "vue";
 import { set } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
+import Button from "@/components/Button.vue";
 
 const { section, opened, playAudio } = storeToRefs(useStore());
 
@@ -44,13 +45,13 @@ watch(section, (section) => {
           </div>
           <div class="mt-4">You are cordially invited to our wedding.</div>
           <div class="mt-10">
-            <button
-              class="rounded-br-md rounded-t-full rounded-bl-full flex items-center gap-3 bg-primary text-white text-sm font-bold px-8 py-4 hover:opacity-80 active:opacity-90"
+            <Button
+              class="rounded-br-md rounded-t-full rounded-bl-full px-8 py-4"
               @click="openInvitation()"
             >
               <span class="w-4 h-4"><RiMailOpenLine /></span>
               <span>OPEN INVITATION</span>
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -66,18 +67,20 @@ watch(section, (section) => {
     @apply -translate-y-full;
   }
 
-  &:before {
+  &:before,
+  &:after {
     content: "";
-    @apply fixed top-[4vh] -left-[3rem] w-[412px] h-[130px] bg-contain opacity-60 pointer-events-none #{!important};
+    @apply fixed -z-[1] bg-contain bg-no-repeat opacity-60 pointer-events-none max-w-[70vw] #{!important};
     filter: sepia(100%) hue-rotate(115deg);
     background: url("../plane.webp");
   }
 
+  &:before {
+    @apply top-[calc(4*var(--vh))] -left-[3rem] w-[412px] h-[130px];
+  }
+
   &:after {
-    content: "";
-    @apply fixed bottom-[4vh] -right-[3rem] w-[330px] h-[104px] bg-contain opacity-60 pointer-events-none transform rotate-180 -scale-y-100 #{!important};
-    filter: sepia(100%) hue-rotate(115deg);
-    background: url("../plane.webp");
+    @apply bottom-[calc(4*var(--vh))] -right-[3rem] w-[330px] h-[104px] rotate-180 -scale-y-100 #{!important};
   }
 }
 </style>

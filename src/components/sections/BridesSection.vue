@@ -38,7 +38,6 @@ useIntersection(target, () => {
 .wrapper {
   @apply relative z-[2] lg:pl-[calc(var(--passport-height)*var(--passport-scale))];
   @apply pb-[calc(var(--passport-width)*var(--passport-scale))] lg:pb-0;
-  //@apply pt-[15vh] lg:pt-0;
   @apply transform -translate-y-12 lg:translate-y-0 lg:translate-x-12 opacity-0;
   transition: 0.7s all;
   transition-delay: 0.5s;

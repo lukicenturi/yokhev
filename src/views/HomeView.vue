@@ -7,6 +7,7 @@ import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/index";
 import HolyMatrimonySection from "@/components/sections/HolyMatrimonySection.vue";
 import { RiVolumeUpLine, RiVolumeMuteLine } from "vue-remix-icons";
+import Button from "@/components/Button.vue";
 
 const { section, playAudio, opened } = storeToRefs(useStore());
 
@@ -60,13 +61,13 @@ watch(playAudio, (playAudio) => {
   <OpeningSection />
   <BridesSection />
   <HolyMatrimonySection />
-  <button
-    class="fixed bottom-4 right-4 rounded-full bg-primary text-white z-[10] p-4 hover:opacity-80 active:opacity-90"
+  <Button
+    class="fixed bottom-4 right-4 rounded-full z-[10] p-4"
     v-if="opened"
     @click="playAudio = !playAudio"
   >
     <span class="block w-6 h-6">
       <RiVolumeUpLine v-if="playAudio" /> <RiVolumeMuteLine v-else />
     </span>
-  </button>
+  </Button>
 </template>
