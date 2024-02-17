@@ -1,13 +1,13 @@
 import { onMounted } from "vue";
 import { get } from "@vueuse/core";
 
-export const useIntersection = (target, callback) => {
+export const useIntersection = (target, callback, min = 0.5) => {
   onMounted(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.intersectionRatio >= 0.5) {
+            if (entry.intersectionRatio >= min) {
               callback();
             }
           }

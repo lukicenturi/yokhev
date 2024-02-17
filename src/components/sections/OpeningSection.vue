@@ -19,7 +19,7 @@ const openInvitation = () => {
 const passportState = ref(1);
 
 watch(section, (section) => {
-  set(passportState, Math.min(3, section));
+  set(passportState, Math.min(4, section));
 });
 </script>
 
@@ -33,10 +33,10 @@ watch(section, (section) => {
     <div class="container h-full">
       <div
         class="flex flex-col lg:flex-row h-full w-full items-center justify-center gap-10"
-        :class="{
-          'lg:flex-row': passportState < 3,
-        }"
       >
+        <div class="boarding_pass" :class="{ gone: section > 1 }">
+          <img src="/boarding_pass.png" />
+        </div>
         <Passport :state="passportState" />
         <div class="flex flex-col items-center text-center">
           <div class="font-adelia text-gray-400 text-xl">Dear</div>
@@ -81,6 +81,16 @@ watch(section, (section) => {
 
   &:after {
     @apply bottom-[calc(4*var(--vh))] -right-[3rem] w-[330px] h-[104px] rotate-180 -scale-y-100 #{!important};
+  }
+}
+
+.boarding_pass {
+  @apply absolute w-[380px] lg:w-[510px] -translate-y-[7.5rem] lg:translate-y-0 -translate-x-[1rem] lg:-translate-x-[13rem] -rotate-90 transition-all;
+  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
+
+  &.gone {
+    @apply opacity-0 invisible;
+    margin-top: 100rem;
   }
 }
 </style>

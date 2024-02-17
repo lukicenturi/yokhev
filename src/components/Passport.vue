@@ -25,7 +25,7 @@ defineProps({
   perspective: 2000px;
   transition: 1s;
   transform-style: preserve-3d;
-  filter: drop-shadow(0 0 25px rgb(0 0 0 / 0.15));
+  filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.5));
 
   &__cover {
     @apply w-full h-full relative;
@@ -58,7 +58,8 @@ defineProps({
   }
 
   &--state-2,
-  &--state-3 {
+  &--state-3,
+  &--state-4 {
     @apply rotate-90 scale-[var(--passport-scale)];
 
     .passport {
@@ -90,6 +91,10 @@ defineProps({
         @apply opacity-100;
       }
     }
+  }
+
+  &--state-4 {
+    @apply translate-y-0 lg:translate-x-[calc(var(--passport-width)*var(--passport-scale)/2)];
   }
 }
 </style>
