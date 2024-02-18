@@ -15,7 +15,7 @@ export const useIntersection = (target, callback, min = 0.5) => {
       },
       {
         root: null, // observing intersections relative to the viewport
-        threshold: 0.5, // trigger when 50% of the target is visible
+        threshold: min, // trigger when 50% of the target is visible
       }
     );
 

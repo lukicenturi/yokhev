@@ -9,6 +9,7 @@ import HolyMatrimonySection from "@/components/sections/HolyMatrimonySection.vue
 import { RiVolumeUpLine, RiVolumeMuteLine } from "vue-remix-icons";
 import Button from "@/components/Button.vue";
 import BoardingPassSection from "@/components/sections/BoardingPassSection.vue";
+import WeddingWishSection from "@/components/sections/WeddingWishSection.vue";
 
 const { section, playAudio, opened } = storeToRefs(useStore());
 
@@ -48,8 +49,9 @@ watch(playAudio, (playAudio) => {
   <BridesSection />
   <HolyMatrimonySection />
   <BoardingPassSection />
+  <WeddingWishSection />
   <Button
-    class="fixed bottom-4 right-4 rounded-full z-[10]"
+    class="fixed bottom-4 right-4 rounded-full z-[10] border-2 border-white"
     v-if="opened"
     @click="playAudio = !playAudio"
   >

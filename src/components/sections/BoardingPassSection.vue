@@ -16,26 +16,19 @@ useIntersection(
       set(section, 4);
     }
   },
-  0.1
+  0.2
 );
 </script>
 <template>
-  <section ref="target" class="w-full h-full" id="section-4">
+  <section ref="target" class="w-full h-full bg-primary" id="section-4">
     <div class="container h-full">
       <div
         class="flex items-center justify-center flex-col h-full text-center py-20"
       >
-        <img src="/boarding_pass.png" class="image" />
+        <div class="image rounded-xl overflow-hidden max-w-[1200px]">
+          <img src="/boarding_pass.webp" />
+        </div>
       </div>
     </div>
   </section>
 </template>
-<style scoped lang="scss">
-.image {
-  filter: drop-shadow(1.5rem 1.5rem 0 rgba(38, 87, 72, 0.5));
-
-  @media (max-width: 767px) {
-    filter: drop-shadow(0.5rem 0.5rem 0 rgba(38, 87, 72, 0.5));
-  }
-}
-</style>

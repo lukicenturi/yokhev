@@ -61,6 +61,7 @@ defineProps({
   &--state-3,
   &--state-4 {
     @apply rotate-90 scale-[var(--passport-scale)];
+    filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
 
     .passport {
       &__cover {

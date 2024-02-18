@@ -10,11 +10,15 @@ const { section, opened } = storeToRefs(useStore());
 
 const target = ref();
 
-useIntersection(target, () => {
-  if (get(opened)) {
-    set(section, 3);
-  }
-});
+useIntersection(
+  target,
+  () => {
+    if (get(opened)) {
+      set(section, 3);
+    }
+  },
+  0.5
+);
 </script>
 <template>
   <section ref="target" class="w-full h-full" id="section-3">
