@@ -25,17 +25,20 @@ useIntersection(
       <div
         class="flex items-center justify-center flex-col h-full text-center py-20"
       >
-        <img src="/boarding_pass.png" class="image" />
+        <div class="image">
+          <img src="/boarding_pass.webp" />
+        </div>
       </div>
     </div>
   </section>
 </template>
 <style scoped lang="scss">
 .image {
-  filter: drop-shadow(1.5rem 1.5rem 0 rgba(38, 87, 72, 0.5));
+  @apply rounded-xl overflow-hidden;
+  box-shadow: 1rem 1rem 0 rgba(38, 87, 72, 0.5);
 
   @media (max-width: 767px) {
-    filter: drop-shadow(0.5rem 0.5rem 0 rgba(38, 87, 72, 0.5));
+    box-shadow: 0.5rem 0.5rem 0 rgba(38, 87, 72, 0.5);
   }
 }
 </style>
