@@ -1,21 +1,10 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
-import { ref } from "vue";
-import { get, set } from "@vueuse/core";
-import { useIntersection } from "@/utils/intersection";
 
 const images = ["yoksan.jpg", "heavenny.jpg"];
 
-const { section, opened } = storeToRefs(useStore());
-
-const target = ref();
-
-useIntersection(target, () => {
-  if (get(opened)) {
-    set(section, 2);
-  }
-});
+const { section } = storeToRefs(useStore());
 </script>
 <template>
   <section ref="target" class="w-full h-full" id="section-2">
@@ -25,7 +14,7 @@ useIntersection(target, () => {
           <div
             v-for="image in images"
             :key="image"
-            class="w-[8rem] h-[8rem] rounded-full overflow-hidden p-2 bg-white shadow"
+            class="w-[8rem] h-[8rem] rounded-full overflow-hidden bg-white shadow border border-white border-[0.5rem]"
           >
             <img class="w-full h-full object-cover" :src="`/avatar/${image}`" />
           </div>

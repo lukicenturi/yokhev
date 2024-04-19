@@ -1,34 +1,34 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { get, set } from "@vueuse/core";
-import { storeToRefs } from "pinia";
-import { useStore } from "@/stores";
-import { useIntersection } from "@/utils/intersection";
-
-const { section, opened } = storeToRefs(useStore());
-
-const target = ref();
-
-useIntersection(
-  target,
-  () => {
-    if (get(opened)) {
-      set(section, 4);
-    }
-  },
-  0.2
-);
-</script>
 <template>
-  <section ref="target" class="w-full h-full bg-primary" id="section-4">
-    <div class="container h-full">
+  <section class="w-full bg-primary relative min-h-[414px]" id="section-4">
+    <div
+      class="container !px-12 h-full max-w-none flex lg:justify-center text-center py-20 overflow-x-auto scroller relative"
+    >
       <div
-        class="flex items-center justify-center flex-col h-full text-center py-20"
+        class="image rounded-xl overflow-hidden max-w-[1200px] min-w-[700px]"
       >
-        <div class="image rounded-xl overflow-hidden max-w-[1200px]">
-          <img src="/boarding_pass.webp" />
-        </div>
+        <img class="w-full h-full object-contain" src="/boarding_pass.webp" />
       </div>
     </div>
+
+    <div class="left-0 indicator indicator__start" />
+    <div class="right-0 indicator indicator__end" />
   </section>
 </template>
+<style lang="scss" scoped>
+.scroller {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.indicator {
+  @apply from-transparent to-primary absolute w-12 h-full top-0;
+
+  &__start {
+    @apply bg-gradient-to-l;
+  }
+  &__end {
+    @apply bg-gradient-to-r;
+  }
+}
+</style>

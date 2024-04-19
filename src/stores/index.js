@@ -7,5 +7,8 @@ export const useStore = defineStore("store", () => {
 
   const playAudio = ref(false);
 
-  return { section, opened, playAudio };
+  const additionalHeight = ref(0);
+  const openedFully = ref(false);
+
+  return { section, opened, playAudio, additionalHeight, openedFully };
 });

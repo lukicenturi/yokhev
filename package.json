@@ -18,7 +18,9 @@
 		"pinia": "2.0.22",
 		"vue": "3.2.39",
 		"vue-remix-icons": "3.9.0",
-		"vue-router": "4.1.5"
+		"vue-router": "4.1.5",
+		"vue3-marquee-slider": "1.0.5",
+		"swiper": "11.1.4"
 	},
 	"devDependencies": {
 		"@rushstack/eslint-patch": "1.2.0",

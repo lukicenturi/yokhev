@@ -19,7 +19,7 @@ const timers = computed(() => {
   ];
 });
 
-const targetDate = new Date("2024-10-24");
+const targetDate = new Date("2024-08-10 10:30");
 
 const updateCountdown = () => {
   const now = new Date();

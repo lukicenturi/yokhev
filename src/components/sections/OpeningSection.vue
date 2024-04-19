@@ -2,24 +2,39 @@
 import Passport from "@/components/Passport.vue";
 import { RiMailOpenLine } from "vue-remix-icons";
 import { ref, watch } from "vue";
-import { set } from "@vueuse/core";
+import { set, whenever } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
 import Button from "@/components/Button.vue";
 
-const { section, opened, playAudio } = storeToRefs(useStore());
+defineProps({
+  name: {
+    type: String,
+  },
+});
+
+const emit = defineEmits(["open"]);
+
+const { section, opened, playAudio, openedFully } = storeToRefs(useStore());
 
 const openInvitation = () => {
-  set(playAudio, true);
-  document.body.classList.remove("overflow-hidden");
   set(opened, true);
   set(section, 2);
+  set(playAudio, true);
+  emit("open");
+  setTimeout(() => {
+    set(openedFully, true);
+  }, 1000);
 };
 
 const passportState = ref(1);
 
 watch(section, (section) => {
   set(passportState, Math.min(4, section));
+});
+
+whenever(openedFully, () => {
+  document.body.classList.remove("overflow-hidden");
 });
 </script>
 
@@ -41,7 +56,7 @@ watch(section, (section) => {
         <div class="flex flex-col items-center text-center">
           <div class="font-adelia text-gray-400 text-xl">Dear</div>
           <div class="font-bold text-primary text-4xl font-lora">
-            Luki Centuri
+            {{ name }}
           </div>
           <div class="mt-4">You are cordially invited to our wedding.</div>
           <div class="mt-10">

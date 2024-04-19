@@ -1,30 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { get, set } from "@vueuse/core";
-import { storeToRefs } from "pinia";
-import { useStore } from "@/stores";
-import { useIntersection } from "@/utils/intersection";
 import Countdown from "@/components/Countdown.vue";
-
-const { section, opened } = storeToRefs(useStore());
-
-const target = ref();
-
-useIntersection(
-  target,
-  () => {
-    if (get(opened)) {
-      set(section, 3);
-    }
-  },
-  0.5
-);
 </script>
 <template>
-  <section ref="target" class="w-full h-full" id="section-3">
+  <section class="w-full md:h-full" id="section-3">
     <div class="container h-full">
       <div
-        class="flex items-center justify-end flex-col gap-4 h-full text-center py-20"
+        class="flex items-center justify-end flex-col gap-4 h-full text-center min-h-[400px] py-20"
       >
         <div class="font-poppins text-gray-400 italic font-medium">
           The journey starts in

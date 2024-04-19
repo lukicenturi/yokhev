@@ -1,12 +1,26 @@
 <script setup>
+import { storeToRefs } from "pinia";
+import { get } from "@vueuse/core";
+import { computed } from "vue";
+import { useStore } from "@/stores";
+
 defineProps({
   state: {
     type: Number,
   },
 });
+
+const { additionalHeight, openedFully } = storeToRefs(useStore());
+
+const additionalPx = computed(() => {
+  return Math.round(get(additionalHeight) + 60) + "px";
+});
 </script>
 <template>
-  <div class="passport" :class="`passport--state-${state}`">
+  <div
+    class="passport"
+    :class="[`passport--state-${state}`, { fully: openedFully }]"
+  >
     <div class="passport__cover">
       <div class="passport__cover__back"></div>
       <div class="passport__cover__front"></div>
@@ -30,7 +44,7 @@ defineProps({
   &__cover {
     @apply w-full h-full relative;
     transform-origin: left;
-    transition: 1s;
+    transition: 2s;
     transform-style: preserve-3d;
 
     &__back {
@@ -66,21 +80,25 @@ defineProps({
     .passport {
       &__cover {
         transform: rotateY(-180deg);
+      }
+    }
 
-        &__front {
-          @apply opacity-0;
-        }
+    @media screen and (max-width: 768px) {
+      --additional: v-bind(additionalPx);
+      @apply translate-y-[calc(var(--passport-top)+(var(--passport-width)*var(--passport-scale))-(var(--additional)*var(--passport-scale)))];
+
+      &.fully {
+        @apply transition-none;
       }
     }
   }
 
   &--state-2 {
-    @apply translate-y-[calc(var(--passport-top)+(var(--passport-width)*var(--passport-scale)))];
+    @apply md:translate-y-[calc(var(--passport-top)+(var(--passport-width)*var(--passport-scale)))];
   }
 
-  &--state-3 {
-    @apply translate-y-[calc(var(--passport-top-2)+(var(--passport-width)*var(--passport-scale)))] lg:translate-x-[calc(var(--passport-width)*var(--passport-scale)/2)];
-
+  &--state-3,
+  &--state-4 {
     .passport {
       &__cover {
         &__back {
@@ -94,8 +112,23 @@ defineProps({
     }
   }
 
+  &--state-3 {
+    @apply md:translate-y-[calc(var(--passport-top-2)+(var(--passport-width)*var(--passport-scale)))];
+    @apply lg:translate-x-[calc(var(--passport-width)*var(--passport-scale)/2)];
+  }
+
   &--state-4 {
-    @apply translate-y-0 lg:translate-x-[calc(var(--passport-width)*var(--passport-scale)/2)];
+    @apply lg:translate-y-0 lg:translate-x-[calc(var(--passport-width)*var(--passport-scale)/2)];
+  }
+
+  &.fully {
+    .passport {
+      &__cover {
+        &__front {
+          @apply opacity-0;
+        }
+      }
+    }
   }
 }
 </style>
