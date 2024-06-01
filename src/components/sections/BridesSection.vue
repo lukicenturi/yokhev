@@ -2,7 +2,7 @@
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
 
-const images = ["yoksan.jpg", "heavenny.jpg"];
+const images = ["yoksan.webp", "heavenny.webp"];
 
 const { section } = storeToRefs(useStore());
 </script>
@@ -14,7 +14,7 @@ const { section } = storeToRefs(useStore());
           <div
             v-for="image in images"
             :key="image"
-            class="w-[8rem] h-[8rem] rounded-full overflow-hidden bg-white shadow border border-white border-[0.5rem]"
+            class="w-[8rem] h-[8rem] rounded-full overflow-hidden bg-white shadow border-white border-[0.5rem]"
           >
             <img class="w-full h-full object-cover" :src="`/avatar/${image}`" />
           </div>

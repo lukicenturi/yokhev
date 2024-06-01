@@ -6,14 +6,15 @@ import { get, set, useElementSize, whenever } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
 import HolyMatrimonySection from "@/components/sections/HolyMatrimonySection.vue";
-import { RiVolumeUpLine, RiVolumeMuteLine } from "vue-remix-icons";
+import RiVolumeUpLine from "vue-remix-icons/icons/ri-volume-up-line.vue";
+import RiVolumeMuteLine from "vue-remix-icons/icons/ri-volume-mute-line.vue";
 import Button from "@/components/Button.vue";
 import BoardingPassSection from "@/components/sections/BoardingPassSection.vue";
 import WeddingWishSection from "@/components/sections/WeddingWishSection.vue";
 import { useRoute } from "vue-router";
 import PresentSection from "@/components/sections/PresentSection.vue";
 import PhotosSection from "@/components/sections/PhotosSection.vue";
-import StorySection from '@/components/sections/StorySection.vue'
+import StorySection from "@/components/sections/StorySection.vue";
 
 const { playAudio, opened, section, additionalHeight, openedFully } =
   storeToRefs(useStore());

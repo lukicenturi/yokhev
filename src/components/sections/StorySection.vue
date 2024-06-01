@@ -20,7 +20,9 @@ const pagination = {
 
 <template>
   <div class="py-16 md:py-32">
-    <div class="font-bold text-primary text-4xl font-lora mb-4 md:mb-8 text-center">
+    <div
+      class="font-bold text-primary text-4xl font-lora mb-4 md:mb-8 text-center"
+    >
       Our Stories
     </div>
     <Swiper
@@ -36,7 +38,7 @@ const pagination = {
           <div class="col-span-3 rounded-xl lg:rounded-3xl overflow-hidden">
             <img
               class="max-w-[400px] md:max-w-none w-full"
-              src="/story/01.png"
+              src="/story/01.webp"
             />
           </div>
           <div
@@ -61,7 +63,7 @@ const pagination = {
           <div class="col-span-3">
             <img
               class="max-w-[400px] md:max-w-none w-full"
-              src="/story/02.png"
+              src="/story/02.webp"
             />
           </div>
           <div
@@ -88,7 +90,7 @@ const pagination = {
           <div class="col-span-3 rounded-xl lg:rounded-3xl overflow-hidden">
             <img
               class="max-w-[400px] md:max-w-none w-full"
-              src="/story/03.jpg"
+              src="/story/03.webp"
             />
           </div>
           <div

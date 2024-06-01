@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { RiFileCopyLine } from "vue-remix-icons";
+import RiFileCopyLine from "vue-remix-icons/icons/ri-file-copy-line.vue";
+
 import { useClipboard } from "@vueuse/core";
 
 const accountNo = "0292255207";
@@ -9,7 +10,9 @@ const { copy } = useClipboard({ source: accountNo });
 
 <template>
   <div>
-    <div class="container border-t py-12 font-lora lg:flex flex-col items-center lg:text-center">
+    <div
+      class="container border-t py-12 font-lora lg:flex flex-col items-center lg:text-center"
+    >
       We are very grateful for all the wishes and prayers. <br />
 
       One thing to note is that we won't be living in Indonesia after our

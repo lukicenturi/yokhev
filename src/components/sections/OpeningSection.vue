@@ -1,6 +1,6 @@
 <script setup>
 import Passport from "@/components/Passport.vue";
-import { RiMailOpenLine } from "vue-remix-icons";
+import RiMailOpenLine from "vue-remix-icons/icons/ri-mail-open-line.vue";
 import { ref, watch } from "vue";
 import { set, whenever } from "@vueuse/core";
 import { storeToRefs } from "pinia";
@@ -76,7 +76,7 @@ whenever(openedFully, () => {
 <style scoped lang="scss">
 .wrapper {
   @apply fixed top-0 z-[3] transition duration-1000 bg-cover;
-  background-image: url("../bg.jpg");
+  background-image: url("../bg.webp");
 
   &.opened {
     @apply -translate-y-full;
