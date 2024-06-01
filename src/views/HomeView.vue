@@ -2,7 +2,7 @@
 import OpeningSection from "@/components/sections/OpeningSection.vue";
 import BridesSection from "@/components/sections/BridesSection.vue";
 import { onBeforeMount, onMounted, ref, watch } from "vue";
-import { get, set, useElementSize, whenever } from "@vueuse/core";
+import { get, set } from "@vueuse/core";
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
 import HolyMatrimonySection from "@/components/sections/HolyMatrimonySection.vue";

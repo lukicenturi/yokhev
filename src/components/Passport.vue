@@ -48,7 +48,7 @@ const additionalPx = computed(() => {
     transform-style: preserve-3d;
 
     &__back {
-      @apply absolute w-full h-full top-0 rounded-r-2xl overflow-hidden border-l-2;
+      @apply absolute w-full h-full top-0 rounded-r-lg md:rounded-r-xl overflow-hidden border-l-2;
       background-size: 100% 100%;
       background-image: url("../page1.webp");
       transform: rotateX(180deg);
@@ -58,7 +58,7 @@ const additionalPx = computed(() => {
     }
 
     &__front {
-      @apply w-full h-full rounded-r-2xl overflow-hidden bg-primary;
+      @apply w-full h-full rounded-r-lg md:rounded-r-xl overflow-hidden bg-primary;
       background-size: 100% 100%;
       background-image: url("../passport_cover.webp");
       backface-visibility: hidden;

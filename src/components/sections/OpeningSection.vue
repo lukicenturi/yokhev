@@ -49,13 +49,17 @@ whenever(openedFully, () => {
       <div
         class="flex flex-col lg:flex-row h-full w-full items-center justify-center gap-14 lg:gap-10"
       >
-        <div class="boarding_pass" :class="{ gone: section > 1 }">
-          <img src="/boarding_pass.webp" />
+        <div class="relative">
+          <div class="boarding_pass" :class="{ gone: section > 1 }">
+            <img src="/boarding_pass.webp" />
+          </div>
         </div>
         <Passport :state="passportState" />
         <div class="flex flex-col items-center text-center">
           <div class="font-adelia text-gray-400 text-xl">Dear</div>
-          <div class="font-bold text-primary text-4xl font-lora">
+          <div
+            class="font-bold text-primary text-4xl font-lora md:max-w-[400px] md:w-[400px]"
+          >
             {{ name }}
           </div>
           <div class="mt-4">You are cordially invited to our wedding.</div>
@@ -100,12 +104,12 @@ whenever(openedFully, () => {
 }
 
 .boarding_pass {
-  @apply absolute w-[380px] lg:w-[510px] -translate-y-[7.5rem] lg:translate-y-0 -translate-x-[1rem] lg:-translate-x-[13rem] -rotate-90 transition-all rounded-lg overflow-hidden;
+  @apply absolute w-[380px] lg:w-[510px] translate-y-[8rem] lg:-translate-y-[7.5rem] -translate-x-[53%] lg:-translate-x-[82px] left-0 -rotate-90 transition-all rounded-lg overflow-hidden;
   filter: drop-shadow(0 0 8px rgb(0 0 0 / 0.2));
 
   &.gone {
     @apply opacity-0 invisible;
-    margin-top: 100rem;
+    margin-top: 10rem;
   }
 }
 </style>
