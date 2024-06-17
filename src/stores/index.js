@@ -10,5 +10,7 @@ export const useStore = defineStore("store", () => {
   const additionalHeight = ref(0);
   const openedFully = ref(false);
 
-  return { section, opened, playAudio, additionalHeight, openedFully };
+  const isChinese = ref(false);
+
+  return { section, opened, playAudio, additionalHeight, openedFully, isChinese };
 });

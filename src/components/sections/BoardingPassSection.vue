@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useStore } from "@/stores";
+
+const { isChinese } = storeToRefs(useStore());
+</script>
+
 <template>
   <section class="w-full bg-primary relative min-h-[414px]" id="section-4">
     <div
@@ -6,7 +13,10 @@
       <div
         class="image rounded-xl overflow-hidden max-w-[1200px] min-w-[700px]"
       >
-        <img class="w-full h-full object-contain" src="/boarding_pass.webp" />
+        <img
+          class="w-full h-full object-contain"
+          :src="isChinese ? '/boarding_pass_cn.webp' : '/boarding_pass.webp'"
+        />
       </div>
     </div>
 

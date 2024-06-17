@@ -1,6 +1,8 @@
 <script setup>
 import { computed, ref } from "vue";
 import { get, set, useIntervalFn } from "@vueuse/core";
+import { storeToRefs } from "pinia";
+import { useStore } from "@/stores";
 
 const countdown = ref({
   days: 0,
@@ -8,14 +10,16 @@ const countdown = ref({
   minutes: 0,
   seconds: 0,
 });
+const { isChinese } = storeToRefs(useStore());
 
 const timers = computed(() => {
   const countdownVal = get(countdown);
+  const cn = get(isChinese);
   return [
-    [countdownVal.days, "days"],
-    [countdownVal.hours, "hours"],
-    [countdownVal.minutes, "minutes"],
-    [countdownVal.seconds, "seconds"],
+    [countdownVal.days, cn ? "hari" : "days"],
+    [countdownVal.hours, cn ? "jam" : "hours"],
+    [countdownVal.minutes, cn ? "menit" : "minutes"],
+    [countdownVal.seconds, cn ? "detik" : "seconds"],
   ];
 });
 

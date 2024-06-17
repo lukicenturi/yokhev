@@ -10,7 +10,7 @@ defineProps({
   },
 });
 
-const { additionalHeight, openedFully } = storeToRefs(useStore());
+const { additionalHeight, openedFully, isChinese } = storeToRefs(useStore());
 
 const additionalPx = computed(() => {
   return Math.round(get(additionalHeight) + 60) + "px";
@@ -19,7 +19,7 @@ const additionalPx = computed(() => {
 <template>
   <div
     class="passport"
-    :class="[`passport--state-${state}`, { fully: openedFully }]"
+    :class="[`passport--state-${state}`, { fully: openedFully, cn: isChinese }]"
   >
     <div class="passport__cover">
       <div class="passport__cover__back"></div>
@@ -127,6 +127,22 @@ const additionalPx = computed(() => {
         &__front {
           @apply opacity-0;
         }
+      }
+    }
+  }
+
+  &.cn {
+    .passport {
+      &__cover {
+        &__back {
+          background-image: url("../page1_cn.webp");
+        }
+        &__front {
+          background-image: url("../passport_cover_cn.webp");
+        }
+      }
+      &__page {
+        background-image: url("../page2_cn.webp");
       }
     }
   }

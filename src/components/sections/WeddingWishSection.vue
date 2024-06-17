@@ -2,6 +2,8 @@
 import { onBeforeMount, Ref, ref, toRefs } from "vue";
 import { get, set, watchImmediate } from '@vueuse/core';
 import axios, { AxiosResponse } from 'axios'
+import { storeToRefs } from 'pinia';
+import { useStore } from "@/stores";
 
 const props = defineProps({
   name: {
@@ -15,6 +17,8 @@ const from = ref<string>("");
 const message = ref<string>("");
 const confirmation = ref<"Hadir" | "Tidak Hadir">("Hadir");
 const guests = ref<string>("1");
+const { isChinese } = storeToRefs(useStore());
+
 
 watchImmediate(name, (name) => {
   set(from, name);
@@ -76,7 +80,7 @@ const add = async () => {
   <section class="w-full" id="section-5">
     <div class="container pt-20 pb-10 md:py-20">
       <div class="font-bold text-primary text-4xl font-lora mb-8">
-        Wedding Wish
+        {{ isChinese ? 'Ucapan Selamat' : 'Wedding Wish'}}
       </div>
       <div class="grid lg:grid-cols-2 gap-20">
         <div class="flex flex-col gap-4">

@@ -15,7 +15,9 @@ defineProps({
 
 const emit = defineEmits(["open"]);
 
-const { section, opened, playAudio, openedFully } = storeToRefs(useStore());
+const { section, opened, playAudio, openedFully, isChinese } = storeToRefs(
+  useStore()
+);
 
 const openInvitation = () => {
   set(opened, true);
@@ -51,25 +53,37 @@ whenever(openedFully, () => {
       >
         <div class="relative">
           <div class="boarding_pass" :class="{ gone: section > 1 }">
-            <img src="/boarding_pass.webp" />
+            <img
+              :src="
+                isChinese ? '/boarding_pass_cn.webp' : '/boarding_pass.webp'
+              "
+            />
           </div>
         </div>
         <Passport :state="passportState" />
         <div class="flex flex-col items-center text-center">
-          <div class="font-adelia text-gray-400 text-xl">Dear</div>
+          <div class="font-adelia text-gray-400 text-xl">
+            {{ isChinese ? "Kepada" : "Dear" }}
+          </div>
           <div
             class="font-bold text-primary text-4xl font-lora md:max-w-[400px] md:w-[400px]"
           >
             {{ name }}
           </div>
-          <div class="mt-4">You are cordially invited to our wedding.</div>
+          <div class="mt-4">
+            {{
+              isChinese
+                ? "Kami mengundang anda ke pernikahan kami."
+                : "You are cordially invited to our wedding."
+            }}
+          </div>
           <div class="mt-10">
             <Button
               class="rounded-br-md rounded-t-full rounded-bl-full px-8 py-4"
               @click="openInvitation()"
             >
               <span class="w-4 h-4"><RiMailOpenLine /></span>
-              <span>OPEN INVITATION</span>
+              <span>{{ isChinese ? "BUKA UNDANGAN" : "OPEN INVITATION" }}</span>
             </Button>
           </div>
         </div>

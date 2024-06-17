@@ -16,7 +16,7 @@ import PresentSection from "@/components/sections/PresentSection.vue";
 import PhotosSection from "@/components/sections/PhotosSection.vue";
 import StorySection from "@/components/sections/StorySection.vue";
 
-const { playAudio, opened, section, additionalHeight, openedFully } =
+const { playAudio, opened, section, additionalHeight, openedFully, isChinese } =
   storeToRefs(useStore());
 
 watch(playAudio, (playAudio) => {
@@ -37,6 +37,10 @@ onBeforeMount(() => {
 
   if (query.to) {
     set(name, query.to);
+  }
+
+  if (query.cn) {
+    set(isChinese, true);
   }
 });
 

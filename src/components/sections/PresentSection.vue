@@ -2,10 +2,13 @@
 import RiFileCopyLine from "vue-remix-icons/icons/ri-file-copy-line.vue";
 
 import { useClipboard } from "@vueuse/core";
+import { storeToRefs } from "pinia";
+import { useStore } from "@/stores";
 
 const accountNo = "0292255207";
 
 const { copy } = useClipboard({ source: accountNo });
+const { isChinese } = storeToRefs(useStore());
 </script>
 
 <template>
@@ -13,21 +16,42 @@ const { copy } = useClipboard({ source: accountNo });
     <div
       class="container border-t py-12 font-lora lg:flex flex-col items-center lg:text-center"
     >
-      We are very grateful for all the wishes and prayers. <br />
+      <template v-if="isChinese">
+        Kami sangat bersyukur atas segala harapan dan doanya. <br />
 
-      One thing to note is that we won't be living in Indonesia after our
-      wedding, <br />
+        Satu hal yang perlu diperhatikan adalah kami tidak akan tinggal di
+        Indonesia setelah pernikahan kami, <br />
 
-      so
-      <span class="font-bold font-lora">
-        we will really appreciate it if guests don't give us any physical gifts.
-      </span>
+        jadi
+        <span class="font-bold font-lora">
+          kami akan sangat menghargai jika anda tidak memberi kami hadiah dalam
+          bentuk fisik.
+        </span>
 
-      <br />
-      <br />
+        <br />
+        <br />
 
-      Instead, guests can show their support by supporting us financially by
-      transfer to
+        Sebaliknya, Anda dapat mendukung kami secara finansial secara transfer,
+        ke
+      </template>
+      <template v-else>
+        We are very grateful for all the wishes and prayers. <br />
+
+        One thing to note is that we won't be living in Indonesia after our
+        wedding, <br />
+
+        so
+        <span class="font-bold font-lora">
+          we will really appreciate it if guests don't give us any physical
+          gifts.
+        </span>
+
+        <br />
+        <br />
+
+        Instead, guests can show their support by supporting us financially by
+        transfer to
+      </template>
 
       <div class="pt-4">
         <button
