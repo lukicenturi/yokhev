@@ -1,28 +1,31 @@
 <script setup lang="ts">
 import { VueMarqueeSlider } from "vue3-marquee-slider";
-import { computed, ref } from "vue";
+import { computed, onBeforeMount, ref } from "vue";
 import { get, set, useIntersectionObserver, useWindowSize } from "@vueuse/core";
 
-const firsts = [
-  "/gallery/01.jpg",
-  "/gallery/02.jpg",
-  "/gallery/03.jpg",
-  "/gallery/04.jpg",
-  "/gallery/05.jpg",
-  "/gallery/06.jpg",
-  "/gallery/07.jpg",
-  "/gallery/08.jpg",
-];
+const firsts = ref([]);
+const seconds = ref([]);
 
-const seconds = [
-  "/gallery/09.jpg",
-  "/gallery/10.jpg",
-  "/gallery/11.jpg",
-  "/gallery/12.jpg",
-  "/gallery/13.jpg",
-  "/gallery/14.jpg",
-  "/gallery/15.jpg",
-];
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+onBeforeMount(() => {
+  let gallery = [];
+  for (let i = 1; i <= 24; i++) {
+    let number = i < 10 ? "0" + i : i;
+    gallery.push(`/gallery/${number}.jpg`);
+  }
+
+  gallery = shuffle(gallery);
+
+  set(firsts, gallery.slice(0, 12));
+  set(seconds, gallery.slice(12, 24));
+});
 
 const paused = ref(true);
 
@@ -46,7 +49,7 @@ useIntersectionObserver(
 const props = computed(() => {
   const small = get(isSmall);
   return {
-    speed: small ? 12000 : 40000,
+    speed: small ? 18000 : 60000,
     space: small ? 8 : 16,
     width: small ? 200 : 400,
     paused: get(paused),
