@@ -1,27 +1,42 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores";
+import RiExternalLinkLine from "vue-remix-icons/icons/ri-external-link-line.vue";
 
+const url = "https://maps.app.goo.gl/vJvcphZiqHZS1FAi9";
 const { isChinese } = storeToRefs(useStore());
 </script>
 
 <template>
-  <section class="w-full bg-primary relative min-h-[414px]" id="section-4">
-    <div
-      class="container !px-12 h-full max-w-none flex lg:justify-center text-center py-20 overflow-x-auto scroller relative"
-    >
+  <section id="section-4" class="bg-primary py-20">
+    <div class="w-full relative">
       <div
-        class="image rounded-xl overflow-hidden max-w-[1200px] min-w-[700px]"
+        class="container !px-12 h-full max-w-none flex lg:justify-center text-center overflow-x-auto scroller relative"
       >
-        <img
-          class="w-full h-full object-contain"
-          :src="isChinese ? '/boarding_pass_cn.webp' : '/boarding_pass.webp'"
-        />
+        <div
+          class="image rounded-xl overflow-hidden max-w-[1200px] min-w-[700px]"
+        >
+          <img
+            class="w-full h-full object-contain"
+            :src="isChinese ? '/boarding_pass_cn.webp' : '/boarding_pass.webp'"
+          />
+        </div>
       </div>
+
+      <div class="left-0 indicator indicator__start" />
+      <div class="right-0 indicator indicator__end" />
     </div>
 
-    <div class="left-0 indicator indicator__start" />
-    <div class="right-0 indicator indicator__end" />
+    <div class="flex justify-center pt-10">
+      <a
+        class="text-white flex items-center gap-2 cursor-pointer hover:underline uppercase font-bold"
+        target="_blank"
+        :href="url"
+      >
+        <span> {{ isChinese ? "Lihat lokasi" : "Open location" }}</span>
+        <RiExternalLinkLine class="w-6" />
+      </a>
+    </div>
   </section>
 </template>
 <style lang="scss" scoped>
