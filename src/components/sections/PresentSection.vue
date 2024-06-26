@@ -27,12 +27,6 @@ const { isChinese } = storeToRefs(useStore());
           kami akan sangat menghargai jika anda tidak memberi kami hadiah dalam
           bentuk fisik.
         </span>
-
-        <br />
-        <br />
-
-        Sebaliknya, Anda dapat mendukung kami secara finansial secara transfer,
-        ke
       </template>
       <template v-else>
         We are very grateful for all the wishes and prayers. <br />
