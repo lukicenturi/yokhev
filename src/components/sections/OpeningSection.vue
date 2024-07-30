@@ -62,24 +62,24 @@ whenever(openedFully, () => {
         </div>
         <Passport :state="passportState" />
         <div class="flex flex-col items-center text-center">
-          <div class="font-adelia text-gray-400 text-xl">
+          <div class="font-adelia text-gray-400 md:text-xl">
             {{ isChinese ? "Kepada" : "Dear" }}
           </div>
           <div
-            class="font-bold text-primary text-4xl font-lora md:max-w-[400px] md:w-[400px]"
+            class="font-bold text-primary text-xl md:text-4xl font-lora md:max-w-[400px] md:w-[400px]"
           >
             {{ name }}
           </div>
-          <div class="mt-4">
+          <div class="mt-4 text-sm md:text-base">
             {{
               isChinese
                 ? "Kami mengundang anda ke pernikahan kami."
                 : "You are cordially invited to our wedding."
             }}
           </div>
-          <div class="mt-10">
+          <div class="mt-4 md:mt-10">
             <Button
-              class="rounded-br-md rounded-t-full rounded-bl-full px-8 py-4"
+              class="rounded-br-md rounded-t-full rounded-bl-full px-4 py-2 md:px-8 md:py-4"
               @click="openInvitation()"
             >
               <span class="w-4 h-4"><RiMailOpenLine /></span>
